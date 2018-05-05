@@ -3,7 +3,7 @@ import { Menu, Segment, Image, Container} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 
-export default class MenuExample extends Component {
+export default class AppMenu extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
