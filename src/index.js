@@ -9,7 +9,8 @@ import App from './components/app';
 import SalesIndex from './containers/sales_index';
 import SalesShow from './containers/sales_show';
 
-import CustomersIndex from './containers/customers_index';
+import ProductsIndex from './components/products/index';
+import CustomersIndex from './components/customers/index';
 
 import reducers from './reducers';
 
@@ -26,7 +27,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: "http://localhost:3000/graphql", headers: { Authorization: 'hey hey hey' } }),
+  link: new HttpLink({ uri: "http://localhost:3000/graphql", headers: { Authorization: '355fb6d2844fe9642c689140c7bdf127' } }),
   cache: new InMemoryCache(),
 });
 
@@ -44,6 +45,7 @@ ReactDOM.render(
             <Switch>
               <Route path='/sales/:id' component={SalesShow} />
               <Route path='/sales' component={SalesIndex} />
+              <Route path='/products' component={ProductsIndex} />
               <Route path='/customers' component={CustomersIndex} />
               <Route path='/' component={App} />
             </Switch>
