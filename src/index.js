@@ -4,21 +4,23 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import promise from 'redux-promise'
+import reducers from './reducers';
 
 import App from './components/app';
+import Menu from './components/layout/menu';
+
+import Lab from './components/lab';
+
 import SalesIndex from './containers/sales_index';
 import SalesShow from './containers/sales_show';
 
 import ProductsIndex from './components/products/index';
+import ProductsNew from './components/products/new';
+
+import CustomersNew from './components/customers/new';
 import CustomersIndex from './components/customers/index';
 
-import reducers from './reducers';
-
-import Menu from './components/menu';
-
-
-import { Input } from 'semantic-ui-react';
-import { Dimmer, Loader, Image, Segment, Form, Field } from 'semantic-ui-react'
+import ContractsIndex from './components/contracts/index';
 
 
 import { ApolloClient } from 'apollo-client';
@@ -33,7 +35,6 @@ const client = new ApolloClient({
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
-
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
@@ -43,13 +44,18 @@ ReactDOM.render(
         <div>
           <ApolloProvider client={client}>
             <Switch>
+              <Route path='/lab' component={Lab} />
               <Route path='/sales/:id' component={SalesShow} />
               <Route path='/sales' component={SalesIndex} />
+              <Route path='/products/new' component={ProductsNew} />
               <Route path='/products' component={ProductsIndex} />
+              <Route path='/customers/new' component={CustomersNew} />
               <Route path='/customers' component={CustomersIndex} />
+              <Route path='/contracts' component={ContractsIndex} />
+
               <Route path='/' component={App} />
             </Switch>
-          </ApolloProvider>,
+          </ApolloProvider>
         </div>
 
       </div>
