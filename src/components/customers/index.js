@@ -66,7 +66,7 @@ class CustomersIndex extends Component {
   renderHeader(){
     return (
       <div style={{paddingTop: '10px'}}>
-        <Header icon as='h3' textAlign='center'>
+        <Header icon as='h4' textAlign='center'>
           <Icon name='users' color='orange'/>
           <Header.Content
             content='Clientes'

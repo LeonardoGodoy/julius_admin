@@ -9,8 +9,6 @@ import reducers from './reducers';
 import App from './components/app';
 import Menu from './components/layout/menu';
 
-import Lab from './components/lab';
-
 import SalesIndex from './containers/sales_index';
 import SalesShow from './containers/sales_show';
 
@@ -50,7 +48,6 @@ ReactDOM.render(
             <ApolloProvider client={client}>
             <Provider2>
               <Switch>
-                <Route path='/lab' component={Lab} />
                 <Route path='/sales/:id' component={SalesShow} />
                 <Route path='/sales' component={SalesIndex} />
                 <Route path='/products/new' component={ProductsNew} />
