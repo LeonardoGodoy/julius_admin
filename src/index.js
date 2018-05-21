@@ -18,6 +18,7 @@ import ProductsIndex from './components/products/index';
 import ProductsNew from './components/products/new';
 
 import CustomersNew from './components/customers/new';
+import CustomersShow from './components/customers/show';
 import CustomersIndex from './components/customers/index';
 
 import ContractsIndex from './components/contracts/index';
@@ -35,28 +36,35 @@ const client = new ApolloClient({
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
+
+
+import { Provider as Provider2 } from './contexts/my_context'
+
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
         <Menu/>
 
-        <div>
-          <ApolloProvider client={client}>
-            <Switch>
-              <Route path='/lab' component={Lab} />
-              <Route path='/sales/:id' component={SalesShow} />
-              <Route path='/sales' component={SalesIndex} />
-              <Route path='/products/new' component={ProductsNew} />
-              <Route path='/products' component={ProductsIndex} />
-              <Route path='/customers/new' component={CustomersNew} />
-              <Route path='/customers' component={CustomersIndex} />
-              <Route path='/contracts' component={ContractsIndex} />
+          <div>
+            <ApolloProvider client={client}>
+            <Provider2>
+              <Switch>
+                <Route path='/lab' component={Lab} />
+                <Route path='/sales/:id' component={SalesShow} />
+                <Route path='/sales' component={SalesIndex} />
+                <Route path='/products/new' component={ProductsNew} />
+                <Route path='/products' component={ProductsIndex} />
+                <Route path='/customers/new' component={CustomersNew} />
+                <Route path='/customers/:id' component={CustomersShow} />
+                <Route path='/customers' component={CustomersIndex} />
+                <Route path='/contracts' component={ContractsIndex} />
 
-              <Route path='/' component={App} />
-            </Switch>
-          </ApolloProvider>
-        </div>
+                <Route path='/' component={App} />
+              </Switch>
+              </Provider2>
+            </ApolloProvider>
+          </div>
 
       </div>
     </BrowserRouter>

@@ -13,11 +13,16 @@ export default class App extends Component {
             <Header.Content>
               Julius Trackmob
             </Header.Content>
+
+            <Container>
+
+            </Container>
           </Header>
 
-          <Statistic/>
         </Container>
       </div>
     );
   }
 }
+
+//<Statistic/>
